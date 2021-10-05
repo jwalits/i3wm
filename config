@@ -39,14 +39,13 @@ workspace $ws10 output DVI-I-2-2
 # Assign Workspaces:
 assign [class="Firefox"] $ws3
 assign [class="Google-chrome"] $ws4
-assign [class="smerge"] $ws10
+assign [class="(?i)smerge"] $ws8
 assign [class="subl"] $ws2
 assign [class="(?i)catalystau-element-desktop"] $ws1
 assign [class="(?i)thunderbird"] $ws5
 assign [class="(?i)terminal"] $ws6
 assign [class="Code"] $ws7
 assign [class="(?i)spotify"] $ws10
-assign [class="(?i)smerge"] $ws8
 
 # Enable floating windows
 for_window [class="(?i)keepassxc"] floating enable, move container to workspace $ws10
@@ -87,9 +86,7 @@ exec --no-startup-id ~/.config/i3/monitor.sh
 exec --no-startup-id sudo xset led 3
 
 # Set mouse acceleration speed on startup
-exec --no-startup-id xinput set-prop 14 'libinput Accel Speed' -0.8
-exec --no-startup-id xinput set-prop 15 'libinput Accel Speed' -0.8
-exec --no-startup-id xinput set-prop 12 'libinput Accel Speed' -0.8
+exec --no-startup-id ~/.config/i3/xinput.sh
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
@@ -119,7 +116,7 @@ bindsym $mod+4 workspace number $ws4
 bindsym $mod+5 workspace number $ws5
 bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
+bindsym $mod+8 workspace number $ws8; layout tabbed
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
@@ -279,7 +276,8 @@ bar {
     status_command  ~/.config/i3/bumblebee-status/bumblebee-status \
         -m publicip bluetooth2 cpu memory battery pasink pasource \
         spotify weather datetime \
-        -p datetime.format="%a %e %b %Y - %H:%M" \
+        -p \
+           datetime.format="%a %e %b %Y - %H:%M" \
         -t iceberg-dark-powerline
     font pango:DejaVu Sans Mono, FontAwesome 9
     colors {
