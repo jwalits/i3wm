@@ -48,6 +48,7 @@ assign [class="Code"] $ws7
 assign [class="(?i)spotify"] $ws10
 
 # Enable floating windows
+for_window [class="Firefox" instance="Browser"] floating enable
 for_window [class="(?i)keepassxc"] floating enable, move container to workspace $ws10
 for_window [class="(?i)Spotify"] floating enable, move container to workspace $ws10
 for_window [class="Gitk"] floating enable, move container to workspace $ws10
